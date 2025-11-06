@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 
 export type TAnswer = {
-  id: string | number;
+  id: string;
   answer: string;
   image: TImage;
 };

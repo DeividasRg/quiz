@@ -2,8 +2,8 @@
 import { useQuizInfo } from "@/lib/context";
 import { questions } from "@/lib/constants";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import AnswerComp from "../components/AnswerComp";
 
 function Page() {
   const { info, setInfo } = useQuizInfo();
@@ -28,10 +28,10 @@ function Page() {
     <main className="flex flex-col h-full">
       <AnimatePresence mode="wait">
         <motion.div
-          key={question.id} // this triggers animation on question change
-          initial={{ opacity: 0, y: 20 }} // fade in + slide up
-          animate={{ opacity: 1, y: 0 }} // visible
-          exit={{ opacity: 0, y: -20 }} // fade out + slide up
+          key={question.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
           className="flex flex-col flex-1"
         >
@@ -40,23 +40,11 @@ function Page() {
           </h1>
           <section className="flex-1 flex flex-col justify-end items-center gap-y-2 ">
             {question.answers.map((answer) => (
-              <button
-                onClick={submitAnswer}
-                className="bg-white w-full h-14 rounded-lg group relative hover:text-white hover:bg-[#767AF9] active:text-white active:bg-[#767AF9] flex items-center pl-3 gap-x-3"
+              <AnswerComp
                 key={answer.id}
-              >
-                <Image
-                  src={answer.image.default}
-                  alt={answer.answer}
-                  className="h-6 w-6 object-contain transition-opacity duration-200 group-hover:opacity-0 group-active:opacity-0"
-                />
-                <Image
-                  src={answer.image.highlighted}
-                  alt={answer.answer}
-                  className="absolute h-6 w-6 object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-active:opacity-100"
-                />
-                <p className="font-semibold text-base">{answer.answer}</p>
-              </button>
+                answer={answer}
+                submitAnswer={submitAnswer}
+              />
             ))}
           </section>
         </motion.div>
