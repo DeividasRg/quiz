@@ -1,10 +1,17 @@
 "use client";
-import React, { createContext, useEffect, useState, ReactNode } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  ReactNode,
+  useContext,
+} from "react";
+import { COOKIE_KEY } from "./constants";
 
 type QuizInfo = {
   question: number | null;
   finished: boolean;
-  timeRemaining: string | null;
+  timeRemaining: number | null;
   gender: "male" | "female" | null;
 };
 
@@ -16,8 +23,6 @@ type QuizInfoContextValue = {
 const QuizInfoContext = createContext<QuizInfoContextValue | undefined>(
   undefined
 );
-
-const STORAGE_KEY = "quizInfo";
 
 const defaultValues: QuizInfo = {
   question: null,
@@ -32,21 +37,30 @@ export const QuizInfoContextProvider = ({
   children: ReactNode;
 }) => {
   const [info, setInfo] = useState<QuizInfo>(() => {
-    if (typeof window === "undefined") return defaultValues;
+    if (typeof document === "undefined") return defaultValues;
 
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
+    const cookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(COOKIE_KEY + "="))
+      ?.split("=")[1];
+
+    if (cookie) {
       try {
-        return JSON.parse(stored) as QuizInfo;
-      } catch {
-        localStorage.removeItem(STORAGE_KEY);
-      }
+        return JSON.parse(decodeURIComponent(cookie)) as QuizInfo;
+      } catch {}
     }
     return defaultValues;
   });
 
+  // Persist info to cookie whenever it changes
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(info));
+    if (typeof document === "undefined") return;
+
+    const value = encodeURIComponent(JSON.stringify(info));
+
+    document.cookie = `${COOKIE_KEY}=${value}; path=/; max-age=${
+      60 * 60 * 24 * 365
+    }`;
   }, [info]);
 
   return (
@@ -57,7 +71,7 @@ export const QuizInfoContextProvider = ({
 };
 
 export const useQuizInfo = () => {
-  const context = React.useContext(QuizInfoContext);
+  const context = useContext(QuizInfoContext);
   if (!context)
     throw new Error(
       "useQuizInfo must be used within a QuizInfoContextProvider"

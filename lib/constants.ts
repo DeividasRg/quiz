@@ -1,6 +1,8 @@
 import { TAnswer, TQuestion } from "./types";
 import { icons } from "./icons";
 
+export const COOKIE_KEY = "quizInfo";
+
 export const genericAnswers: TAnswer[] = [
   {
     id: "75b4b8e6-add6-4b47-82a5-ab5baa448f51",
@@ -139,7 +141,7 @@ export const questions: TQuestion[] = [
   },
   {
     id: "3",
-    question: 'Do you ever drink to feel "normal" or fir in with others?',
+    question: 'Do you ever drink to feel "normal" or fit in with others?',
     answers: genericAnswers,
   },
   {

@@ -20,12 +20,20 @@ function Page() {
   if (!question || !isMounted) return null;
 
   const submitAnswer = () => {
-    if (info.question !== questions.length)
+    if (info.question !== questions.length) {
       setInfo((prev) => ({ ...prev, question: Number(prev.question) + 1 }));
+    } else {
+      setInfo((prev) => ({
+        ...prev,
+        finished: true,
+        timeRemaining: Date.now(),
+        question: null,
+      }));
+    }
   };
 
   return (
-    <main className="flex flex-col h-full">
+    <main className="flex flex-col h-full mt-8">
       <AnimatePresence mode="wait">
         <motion.div
           key={question.id}
