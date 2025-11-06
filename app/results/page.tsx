@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function Page() {
   return (
-    <main className="h-full px-5 pb-5">
+    <main className="px-5 pb-5">
       <h1 className="font-bold text-2xl">
         Your personalized Alcohol-Free Plan is ready!
       </h1>
