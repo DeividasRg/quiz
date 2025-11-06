@@ -11,6 +11,7 @@ import { useIsMounted } from "@/lib/hooks";
 
 function Page() {
   const { info } = useQuizInfo();
+  const gender = info.gender;
   const isMounted = useIsMounted();
 
   if (!info || !isMounted) return null;
@@ -49,7 +50,7 @@ function Page() {
           </div>
           <Image
             className="mt-6"
-            src={info.gender === "male" ? maleResult : femaleResult}
+            src={gender === "male" ? maleResult : femaleResult}
             alt="female"
             quality={100}
           />
