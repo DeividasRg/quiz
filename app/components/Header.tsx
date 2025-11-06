@@ -6,7 +6,7 @@ import Image from "next/image";
 import { defaultValues, useQuizInfo } from "@/lib/context";
 import { Poppins } from "next/font/google";
 import { questions } from "@/lib/constants";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useIsMounted } from "@/lib/hooks";
 
 const poppins = Poppins({
@@ -21,8 +21,8 @@ function Header() {
   const router = useRouter();
 
   const restartQuiz = () => {
-    setInfo(defaultValues);
     setTimeout(() => router.push("/"), 0);
+    setInfo(defaultValues);
   };
 
   const goBack = () => {
@@ -65,32 +65,39 @@ function Header() {
 
   if (pathName === "/quiz")
     return (
-      <header className="px-5 pt-5">
-        <div className="w-full flex justify-between items-center">
-          <button onClick={goBack}>
-            <Image src={Back} alt="Arrow pointing left" />
-          </button>
+      <AnimatePresence mode="wait">
+        <motion.div
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <header className="px-5 pt-5">
+            <div className="w-full flex justify-between items-center">
+              <button onClick={goBack}>
+                <Image src={Back} alt="Arrow pointing left" />
+              </button>
 
-          <Logo />
-          <h1 className={poppins.className}>
-            <span className="font-bold">{info.question ?? 0}</span>
-            <span className="font-bold mx-px">/</span>
-            <span>{questions.length}</span>
-          </h1>
-        </div>
-        <div className="w-full h-1 mt-[13px] rounded-full bg-[#E4E4E4]">
-          <motion.div
-            className="h-1 rounded-full bg-[#767AF9]"
-            initial={{ width: 0 }}
-            animate={{
-              width: info.question
-                ? `${(info.question / questions.length) * 100}%`
-                : "0%",
-            }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
-        </div>
-      </header>
+              <Logo />
+              <h1 className={poppins.className}>
+                <span className="font-bold">{info.question ?? 0}</span>
+                <span className="font-bold mx-px">/</span>
+                <span>{questions.length}</span>
+              </h1>
+            </div>
+            <div className="w-full h-1 mt-[13px] rounded-full bg-[#E4E4E4]">
+              <motion.div
+                className="h-1 rounded-full bg-[#767AF9]"
+                initial={{ width: 0 }}
+                animate={{
+                  width: info.question
+                    ? `${(info.question / questions.length) * 100}%`
+                    : "0%",
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
+            </div>
+          </header>
+        </motion.div>
+      </AnimatePresence>
     );
 }
 
