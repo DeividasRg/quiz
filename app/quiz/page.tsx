@@ -17,7 +17,7 @@ function Page() {
   if (!question || !isMounted) return null;
 
   return (
-    <main className="flex flex-col h-full pb-5">
+    <main className="flex flex-col h-full">
       <h1 className="font-semibold text-2xl text-center">
         {question.question}
       </h1>
