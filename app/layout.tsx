@@ -6,7 +6,7 @@ import ContextWrapper from "@/lib/ContextWrapper";
 
 const figTree = Figtree({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
       lang="en"
       className={`${figTree.className} bg-[#F9F6F4] text-[#303030]`}
     >
-      <body className="p-5 h-[640px]">
+      <body className="h-[640px]">
         <ContextWrapper>
           <Header />
           {children}

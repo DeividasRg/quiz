@@ -19,7 +19,7 @@ const images = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center h-full">
+    <main className="flex flex-col items-center h-full px-5 pb-5">
       <section className="space-y-3">
         <h1 className="font-semibold text-2xl ">What is your gender?</h1>
         <h1 className="text-sm">We will use this to personalize your plan</h1>

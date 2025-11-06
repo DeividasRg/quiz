@@ -7,6 +7,8 @@ import { useQuizInfo } from "@/lib/context";
 import { Poppins } from "next/font/google";
 import { questions } from "@/lib/constants";
 import { motion } from "framer-motion";
+import { useIsMounted } from "@/lib/hooks";
+import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,8 +16,9 @@ const poppins = Poppins({
 });
 
 function Header() {
-  const pathName = usePathname();
   const { info, setInfo } = useQuizInfo();
+  const isMounted = useIsMounted();
+  const pathName = usePathname();
   const router = useRouter();
 
   const goBack = () => {
@@ -30,29 +33,45 @@ function Header() {
     }
   };
 
-  if (pathName === "/") {
+  if (!isMounted || !info || pathName === "/") {
     return (
-      <header className="w-full flex justify-center mb-8">
+      <header className="w-full flex justify-center mb-8 px-5 pt-5">
         <Logo />
+      </header>
+    );
+  }
+
+  if (pathName === "/results") {
+    return (
+      <header className="w-full flex justify-between items-center mb-8 bg-[#FFC633] h-[76px] px-5">
+        <Logo />
+        <div>
+          <p className="flex items-center font-bold text-lg">
+            Reserved price for:
+            <span className="text-2xl font-bold text-[#6A61F1] ml-2.5">
+              14:59
+            </span>
+          </p>
+        </div>
       </header>
     );
   }
 
   if (pathName === "/quiz")
     return (
-      <>
-        <header className="w-full flex justify-between">
+      <header className="px-5 pt-5">
+        <div className="w-full flex justify-between items-center">
           <button onClick={goBack}>
             <Image src={Back} alt="Arrow pointing left" />
           </button>
 
           <Logo />
           <h1 className={poppins.className}>
-            <span className="font-bold">{info.question}</span>
+            <span className="font-bold">{info.question ?? 0}</span>
             <span className="font-bold mx-px">/</span>
             <span>{questions.length}</span>
           </h1>
-        </header>
+        </div>
         <div className="w-full h-1 mt-[13px] rounded-full bg-[#E4E4E4]">
           <motion.div
             className="h-1 rounded-full bg-[#767AF9]"
@@ -64,7 +83,7 @@ function Header() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           />
         </div>
-      </>
+      </header>
     );
 }
 

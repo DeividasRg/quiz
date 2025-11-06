@@ -1,17 +1,15 @@
 "use client";
 import { useQuizInfo } from "@/lib/context";
 import { questions } from "@/lib/constants";
-import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnswerComp from "../components/AnswerComp";
+import { useIsMounted } from "@/lib/hooks";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const { info, setInfo } = useQuizInfo();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setIsMounted(true), 0);
-  }, []);
+  const isMounted = useIsMounted();
+  const router = useRouter();
 
   const question = questions.find(
     (x) => Number(x.id) === Number(info.question)
@@ -29,11 +27,12 @@ function Page() {
         timeRemaining: Date.now(),
         question: null,
       }));
+      setTimeout(() => router.push("/"), 0);
     }
   };
 
   return (
-    <main className="flex flex-col h-full mt-8">
+    <main className="flex flex-col h-full mt-8 px-5 pb-5">
       <AnimatePresence mode="wait">
         <motion.div
           key={question.id}
