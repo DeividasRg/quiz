@@ -17,11 +17,11 @@ function Page() {
   if (!question || !isMounted) return null;
 
   return (
-    <main className="flex flex-col h-full">
+    <main className="flex flex-col h-full pb-5">
       <h1 className="font-semibold text-2xl text-center">
         {question.question}
       </h1>
-      <section className="flex-1 flex flex-col justify-end items-center gap-y-2">
+      <section className="flex-1 flex flex-col justify-end items-center gap-y-2 ">
         {question.answers.map((answer) => (
           <div
             className="bg-white w-full h-14 rounded-lg group relative hover:text-white hover:bg-[#767AF9] flex items-center pl-3 gap-x-3"

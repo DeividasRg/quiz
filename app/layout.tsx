@@ -24,7 +24,7 @@ export default function RootLayout({
       lang="en"
       className={`${figTree.className} bg-[#F9F6F4] text-[#303030]`}
     >
-      <body className="p-5 h-screen">
+      <body className="p-5 h-[640px]">
         <ContextWrapper>
           <Header />
           {children}
