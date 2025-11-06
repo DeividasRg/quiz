@@ -48,10 +48,18 @@ function Page() {
               </p>
             </div>
           </div>
-          {info && isMounted && (
+          {gender === "male" && (
             <Image
               className="mt-6"
-              src={info.gender === "male" ? maleResult : femaleResult}
+              src={maleResult}
+              alt={info.gender ?? "female"}
+              quality={100}
+            />
+          )}
+          {gender === "female" && (
+            <Image
+              className="mt-6"
+              src={femaleResult}
               alt={info.gender ?? "female"}
               quality={100}
             />
