@@ -21,8 +21,10 @@ function Header() {
   const router = useRouter();
 
   const restartQuiz = () => {
-    setTimeout(() => router.push("/"), 0);
-    setInfo(defaultValues);
+    setTimeout(() => {
+      setInfo(defaultValues);
+      router.push("/");
+    }, 0);
   };
 
   const goBack = () => {
