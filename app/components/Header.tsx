@@ -3,12 +3,11 @@ import { usePathname, useRouter } from "next/navigation";
 import Logo from "./Logo";
 import Back from "@/public/Back.svg";
 import Image from "next/image";
-import { useQuizInfo } from "@/lib/context";
+import { defaultValues, useQuizInfo } from "@/lib/context";
 import { Poppins } from "next/font/google";
 import { questions } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { useIsMounted } from "@/lib/hooks";
-import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,6 +19,11 @@ function Header() {
   const isMounted = useIsMounted();
   const pathName = usePathname();
   const router = useRouter();
+
+  const restartQuiz = () => {
+    setInfo(defaultValues);
+    setTimeout(() => router.push("/"), 0);
+  };
 
   const goBack = () => {
     if (info.question === 1) {
@@ -43,8 +47,10 @@ function Header() {
 
   if (pathName === "/results") {
     return (
-      <header className="w-full flex justify-between items-center mb-8 bg-[#FFC633] h-[76px] px-5">
-        <Logo />
+      <header className="sticky top-0 w-full flex justify-between items-center mb-8 bg-[#FFC633] h-[76px] px-5">
+        <button onClick={restartQuiz}>
+          <Logo />
+        </button>
         <div>
           <p className="flex items-center font-bold text-lg">
             Reserved price for:

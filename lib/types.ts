@@ -16,3 +16,15 @@ export type TQuestion = {
   question: string;
   answers: TAnswer[];
 };
+
+export type TResultMetric = {
+  id: number;
+  status: string;
+  name: string;
+  percentage: number;
+  image: {
+    src: StaticImageData;
+    alt: string;
+  };
+  color: string;
+};

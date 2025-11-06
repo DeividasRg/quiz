@@ -1,7 +1,45 @@
-import { TAnswer, TQuestion } from "./types";
+import { TAnswer, TQuestion, TResultMetric } from "./types";
 import { icons } from "./icons";
 
 export const COOKIE_KEY = "quizInfo";
+
+export const resultMetrics: TResultMetric[] = [
+  {
+    id: 1,
+    status: "very strong",
+    name: "Desire to change",
+    percentage: 92,
+    image: {
+      src: icons.lightBulb,
+      alt: "light bulb caricature",
+    },
+    color: "bg-[#289F67]",
+  },
+  {
+    id: 2,
+    status: "too high",
+    name: "Cravings",
+    percentage: 84,
+    image: { src: icons.swirl, alt: "swirl icon caricature" },
+    color: "bg-[#E35244]",
+  },
+  {
+    id: 3,
+    status: "too high",
+    name: "Mental blocks",
+    percentage: 74,
+    image: { src: icons.block, alt: "stop sign icon" },
+    color: "bg-[#E35244]",
+  },
+  {
+    id: 4,
+    status: "moderately high",
+    name: "Stress",
+    percentage: 52,
+    image: { src: icons.lightning, alt: "lightning icon" },
+    color: "bg-[#FFC633]",
+  },
+];
 
 export const genericAnswers: TAnswer[] = [
   {

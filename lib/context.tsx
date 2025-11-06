@@ -24,7 +24,7 @@ const QuizInfoContext = createContext<QuizInfoContextValue | undefined>(
   undefined
 );
 
-const defaultValues: QuizInfo = {
+export const defaultValues: QuizInfo = {
   question: null,
   finished: false,
   timeRemaining: null,

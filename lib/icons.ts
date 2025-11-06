@@ -43,6 +43,11 @@ import taskerHighlighted from "@/public/taskerHighlighted.svg";
 import rocketDefault from "@/public/rocketDefault.svg";
 import rocketHighlighted from "@/public/rocketHighlighted.svg";
 
+import lightBulb from "@/public/lightBulb.svg";
+import swirl from "@/public/swirl.svg";
+import block from "@/public/block.svg";
+import lightning from "@/public/lightning.svg";
+
 export const icons = {
   check: { default: checkDefault, highlighted: checkHighlighted },
   question: { default: questionDefault, highlighted: questionHighlighted },
@@ -59,4 +64,8 @@ export const icons = {
   emoji: { default: emojiDefault, highlighted: emojiHighlighted },
   tasker: { default: taskerDefault, highlighted: taskerHighlighted },
   rocket: { default: rocketDefault, highlighted: rocketHighlighted },
+  swirl,
+  lightBulb,
+  block,
+  lightning,
 } as const;
