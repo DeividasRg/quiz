@@ -1,0 +1,8 @@
+import Image from "next/image";
+import logo from "@/public/logo.svg";
+
+function Logo() {
+  return <Image src={logo} alt="mellow flow logo" />;
+}
+
+export default Logo;
