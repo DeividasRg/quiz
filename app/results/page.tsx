@@ -48,23 +48,12 @@ function Page() {
               </p>
             </div>
           </div>
-          {gender === "male" && (
-            <Image
-              className="mt-6"
-              src={maleResult}
-              alt={info.gender ?? "female"}
-              quality={100}
-            />
-          )}
-          {gender === "female" && (
-            <Image
-              className="mt-6"
-              src={femaleResult}
-              alt={info.gender ?? "female"}
-              quality={100}
-            />
-          )}
-
+          <Image
+            className="mt-6"
+            src={gender === "male" ? maleResult : femaleResult}
+            alt="person"
+            quality={100}
+          />
           <h1 className="font-bold text-2xl my-10">Your Personal Summary</h1>
           <div className="space-y-2">
             {resultMetrics.map((metric) => (

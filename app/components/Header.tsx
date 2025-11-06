@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Logo from "./Logo";
 import Back from "@/public/Back.svg";
 import Image from "next/image";
-import { defaultValues, useQuizInfo } from "@/lib/context";
+import { useQuizInfo } from "@/lib/context";
 import { Poppins } from "next/font/google";
 import { questions } from "@/lib/constants";
 import { AnimatePresence, motion } from "framer-motion";

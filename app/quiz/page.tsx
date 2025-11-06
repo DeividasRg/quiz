@@ -21,13 +21,13 @@ function Page() {
     if (info.question !== questions.length) {
       setInfo((prev) => ({ ...prev, question: Number(prev.question) + 1 }));
     } else {
-      setTimeout(() => router.push("/"), 0);
       setInfo((prev) => ({
         ...prev,
         finished: true,
         timeRemaining: Date.now(),
         question: null,
       }));
+      setTimeout(() => router.push("/"), 0);
     }
   };
 
