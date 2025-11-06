@@ -22,7 +22,7 @@ function Page() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 1 }}
         className="flex flex-col"
       >
         <main className="px-5 pb-5">
