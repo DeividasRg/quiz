@@ -73,7 +73,7 @@ function Header() {
         >
           <header className="px-5 pt-5">
             <div className="w-full flex justify-between items-center">
-              <button onClick={goBack}>
+              <button className="hover:cursor-pointer" onClick={goBack}>
                 <Image src={Back} alt="Arrow pointing left" />
               </button>
 
