@@ -22,12 +22,14 @@ export const useTimer = () => {
     const endTime = info.timeFinished + FIFTEEN_MINUTES;
 
     const update = () => {
-      const timeLeft = Math.max(endTime - Date.now(), 0);
-      setRemaining(timeLeft);
+      let timeLeft = Math.max(endTime - Date.now(), 0);
 
       if (timeLeft === 0) {
-        setInfo((prev) => ({ ...prev, finished: false, timeFinished: null }));
+        setInfo((prev) => ({ ...prev, timeFinished: Date.now() }));
+        timeLeft = FIFTEEN_MINUTES;
       }
+
+      setRemaining(timeLeft);
     };
 
     update();

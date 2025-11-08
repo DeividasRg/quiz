@@ -44,5 +44,9 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(new URL("/results", req.url));
   }
 
+  if (pathname === "/results" && !quizInfo?.finished) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
   return NextResponse.next();
 }
