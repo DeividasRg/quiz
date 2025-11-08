@@ -52,7 +52,6 @@ export const QuizInfoContextProvider = ({
     return defaultValues;
   });
 
-  // Persist info to cookie whenever it changes
   useEffect(() => {
     if (typeof document === "undefined") return;
 

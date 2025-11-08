@@ -27,7 +27,7 @@ function Header() {
   };
 
   const goBack = () => {
-    if (info.question === 1) {
+    if (info.question === 1 || !info.question) {
       setInfo((prev) => ({ ...prev, question: null }));
       setTimeout(() => router.push("/"), 0);
     } else {
@@ -100,6 +100,14 @@ function Header() {
         </motion.div>
       </AnimatePresence>
     );
+
+  return (
+    <header className="w-full flex justify-center mb-8 px-5 pt-5">
+      <button className="hover:cursor-pointer" onClick={restartQuiz}>
+        <Logo />
+      </button>
+    </header>
+  );
 }
 
 export default Header;
