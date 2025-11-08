@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-:root {
-}
-
-@theme inline {
+@theme {
+  --color-compliment: #767af9;
 }
 
 @media (prefers-color-scheme: dark) {

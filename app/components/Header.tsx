@@ -86,7 +86,7 @@ function Header() {
             </div>
             <div className="w-full h-1 mt-[13px] rounded-full bg-[#E4E4E4]">
               <motion.div
-                className="h-1 rounded-full bg-[#767AF9]"
+                className="h-1 rounded-full bg-compliment"
                 initial={{ width: 0 }}
                 animate={{
                   width: info.question

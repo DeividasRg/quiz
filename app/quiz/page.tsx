@@ -10,7 +10,6 @@ function Page() {
   const { info, setInfo } = useQuizInfo();
   const isMounted = useIsMounted();
   const router = useRouter();
-
   const question = questions.find(
     (x) => Number(x.id) === Number(info.question)
   );

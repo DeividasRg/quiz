@@ -44,6 +44,7 @@ export const GenderSelectComp = ({
           <Image
             src={imageData.src}
             alt={imageData.alt}
+            loading="eager"
             className={cn(
               "object-cover w-full h-full",
               imageData.id === 1 && "translate-y-6 scale-120",
