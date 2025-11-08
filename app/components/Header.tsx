@@ -7,7 +7,7 @@ import { useQuizInfo } from "@/lib/context";
 import { Poppins } from "next/font/google";
 import { questions } from "@/lib/constants";
 import { AnimatePresence, motion } from "framer-motion";
-import { useIsMounted } from "@/lib/hooks";
+import { useIsMounted, useTimer } from "@/lib/hooks";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,6 +16,7 @@ const poppins = Poppins({
 
 function Header() {
   const { info, setInfo } = useQuizInfo();
+  const { seconds, minutes } = useTimer();
   const isMounted = useIsMounted();
   const pathName = usePathname();
   const router = useRouter();
@@ -55,7 +56,7 @@ function Header() {
           <p className="flex items-center font-bold text-lg">
             Reserved price for:
             <span className="text-2xl font-bold text-[#6A61F1] ml-2.5">
-              14:59
+              {minutes}:{seconds}
             </span>
           </p>
         </div>

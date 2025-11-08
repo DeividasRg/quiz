@@ -24,10 +24,10 @@ function Page() {
       setInfo((prev) => ({
         ...prev,
         finished: true,
-        timeRemaining: Date.now(),
+        timeFinished: Date.now(),
         question: null,
       }));
-      setTimeout(() => router.push("/"), 0);
+      router.push("/");
     }
   };
 
@@ -45,7 +45,7 @@ function Page() {
           <h1 className="font-semibold text-2xl text-center">
             {question.question}
           </h1>
-          <section className="flex-1 flex flex-col justify-end items-center gap-y-2 ">
+          <ul className="flex-1 flex flex-col justify-end items-center gap-y-2 ">
             {question.answers.map((answer) => (
               <AnswerComp
                 key={answer.id}
@@ -53,7 +53,7 @@ function Page() {
                 submitAnswer={submitAnswer}
               />
             ))}
-          </section>
+          </ul>
         </motion.div>
       </AnimatePresence>
     </main>

@@ -11,7 +11,7 @@ import { COOKIE_KEY } from "./constants";
 type QuizInfo = {
   question: number | null;
   finished: boolean;
-  timeRemaining: number | null;
+  timeFinished: number | null;
   gender: "male" | "female" | null;
 };
 
@@ -27,7 +27,7 @@ const QuizInfoContext = createContext<QuizInfoContextValue | undefined>(
 export const defaultValues: QuizInfo = {
   question: null,
   finished: false,
-  timeRemaining: null,
+  timeFinished: null,
   gender: null,
 };
 

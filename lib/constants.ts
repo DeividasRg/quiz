@@ -3,6 +3,8 @@ import { icons } from "./icons";
 
 export const COOKIE_KEY = "quizInfo";
 
+export const FIFTEEN_MINUTES = 15 * 60 * 1000;
+
 export const resultMetrics: TResultMetric[] = [
   {
     id: 1,
