@@ -69,6 +69,7 @@ export const QuizInfoContextProvider = ({
   );
 };
 
+//easy access to context
 export const useQuizInfo = () => {
   const context = useContext(QuizInfoContext);
   if (!context)
